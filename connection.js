@@ -1,12 +1,20 @@
 var mysql = require('mysql');
 var inquirer = require('inquirer');
 
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'coolidge2',
-  database : 'beer_db',
-});
+if (process.env.JAWSDB_URL) {
+	connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+	var connection = mysql.createConnection({
+	  host     : 'localhost',
+	  user     : 'root',
+	  password : 'coolidge2',
+	  database : 'beer_db',
+	});
+};
+
+
+
+
 
 connection.connect();
 
